@@ -19,3 +19,7 @@ const app = {}
 
 
 app.customElement("app-main")
+
+app.controllers = {}
+
+app.body = document.querySelector("app-main")
