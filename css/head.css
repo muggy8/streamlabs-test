@@ -8,6 +8,10 @@ html, body, app-main {
 	position: relative;
 }
 
+html {
+	font-family: sans-serif;
+}
+
 app-main:empty::after {
 	content: " ";
 	display: block;

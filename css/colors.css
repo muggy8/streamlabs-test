@@ -6,7 +6,8 @@ html {
 	--color-dark: #333;
 	--color-black: #000;
 
-	--color-primary: #ACD4E3;
+	--color-primary: #4C9F2D;
+	--color-secondary: #ACD4E3;
 	--color-clear: rgba(0, 0, 0, 0);
 
 	/* now we've set up the basic background we can go and setup some other variables based on these */

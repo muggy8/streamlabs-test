@@ -1,0 +1,6 @@
+app-banner {
+	font-size: 1.5em;
+	padding: 0.5em;
+	color: var(--color-white);
+	background-color: var(--color-primary);
+}
