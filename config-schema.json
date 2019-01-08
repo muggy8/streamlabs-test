@@ -1,3 +1,4 @@
 {
-	"apiKey": "String of characters for your key. It's a javascript key"
+	"clientId": "String of characters",
+	"scopes": "a url to the scopes needed"
 }

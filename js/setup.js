@@ -23,3 +23,12 @@ app.customElement("app-main")
 app.controllers = {}
 
 app.body = document.querySelector("app-main")
+
+app.catchPromiseError = function(uwu){
+	console.log(uwu)
+	alert("An unexpected error has occurred. Check the console for more information")
+}
+
+app.configsAsync = fetch("config.json")
+	.then(owo=>owo.json())
+	.catch(app.catchPromiseError)
