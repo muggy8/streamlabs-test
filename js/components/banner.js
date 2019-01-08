@@ -3,9 +3,11 @@ fetch("js/components/banner.html")
 	.then(template=>{
 		app.customElement("app-banner")
 
-		proxymity(
+		let view = proxymity(
 			template,
 			app.controllers.banner = app.controllers.banner || {}
-		).appendTo(app.body)
+		)
+
+		view.appendTo(app.body)
 	})
 	.catch(app.catchPromiseError)
