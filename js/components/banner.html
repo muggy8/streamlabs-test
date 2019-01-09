@@ -1,5 +1,5 @@
 <app-banner class="flex vcenter">
-	<span class="font-1.5em">Stream Viewer</span>
+	<span class="font-1.5em link" onclick="this.app.goHome()">Stream Viewer</span>
 	<div class="grow"></div>
 	<nav class="flex-mid">
 		<div class="link {: !app.authState && 'hide' :}|{;app.authState}|" onclick="this.app.logoutClick()">

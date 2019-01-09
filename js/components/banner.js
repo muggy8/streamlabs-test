@@ -17,5 +17,8 @@ app.controllers.banner.ajax = fetch("js/components/banner.html")
 			document.location.reload()
 		}
 
+		controller.goHome = function(){
+			app.rout("/", "Stream Viewer")
+		}
 	})
 	.catch(app.catchPromiseError)

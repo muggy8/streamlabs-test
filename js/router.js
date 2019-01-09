@@ -35,8 +35,14 @@ gapi.load('client:auth2', async function(){
 
 history.replaceState({}, null, document.location.pathname)
 
-app.rout = function(newUrl = document.location.pathname){
-	history.pushState({}, null, newUrl)
+app.rout = function(newUrl = document.location.pathname, title){
+	if (newUrl !== document.location.pathname){
+		history.pushState({}, null, newUrl)
+	}
+
+	if (title){
+		history.replaceState({}, title, newUrl)
+	}
 
 	Object.getOwnPropertyNames(app.controllers)
 		.forEach(controllerName=>{
