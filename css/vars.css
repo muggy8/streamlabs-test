@@ -14,5 +14,8 @@ html {
 
 	--color-background: var(--color-white);
 	--color-text: var(--color-black);
+	--color-button: var(--color-light);
+	--color-button-text: var(--color-primary);
 	--base-padding: 0.5rem;
+	--base-border-radius: 0.2em;
 }
