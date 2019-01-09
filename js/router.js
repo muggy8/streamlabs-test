@@ -10,7 +10,9 @@ gapi.load('client:auth2', async function(){
 	app.controllers.banner.attach()
 
 	function signInSateChange(signInState){
+		app.authState = signInState
 		console.log(signInState)
+
 		if (!signInState){
 			app.controllers.login.attach()
 		}

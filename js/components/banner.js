@@ -5,7 +5,14 @@ app.controllers.banner.ajax = fetch("js/components/banner.html")
 	.then(template=>{
 		app.customElement("app-banner")
 
-		app.controllers.banner.view = proxymity(template, app.controllers.banner)
+		let controller = app.controllers.banner
+
+		controller.view = proxymity(template, app.controllers.banner)
+
+		controller.logoutClick = function(){
+			console.log("logout clicked")
+			gapi.auth2.getAuthInstance().signOut()
+		}
 
 	})
 	.catch(app.catchPromiseError)

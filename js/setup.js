@@ -1,4 +1,4 @@
-const app = {}
+const app = proxymity.convert({})
 
 // new block to keep the custom element function properties scoped to the special function so nothing else can really mess with it too much except by directly getting it via dom but it's so generic that's gonna be kinda hard.
 {
