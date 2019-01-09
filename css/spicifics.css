@@ -3,3 +3,10 @@ app-banner {
 	color: var(--color-white);
 	background-color: var(--color-primary);
 }
+
+stream-list {
+	padding: var(--base-padding);
+	overflow: auto;
+	overflow-x: none;
+	overflow-y: auto;
+}
