@@ -24,12 +24,18 @@ app.controllers.streamList.ajax = fetch("js/components/stream-list.html")
 				part: "snippet",
 				type: "video",
 				eventType: 'live',
-				maxResults: 50,
+				maxResults: 48, // 48 cuz it's a multiple of 4 and 3 that doesn't end up with a werid space at the bottom and is under 50
 				order: "viewCount",
 				relevanceLanguage: navigator.language
 			})
 
 			live.result.items.forEach(item=>controller.streams.list.push(item))
+		}
+
+		controller.routRegex = /^\/$/
+
+		controller.viewStream = function(streamData){
+			app.rout("/stream/" + streamData.id.videoId)
 		}
 
 		controller.view = proxymity(template, app.controllers.streamList)

@@ -52,8 +52,14 @@ app.controllers.base = {
 			this.onAttach && this.onAttach()
 		}
 	},
-	detach: function(){
-		this.view.detach()
+	detach: async function(){
+		if (this.ajax){
+			await this.ajax
+		}
+		if (this.view){
+			this.view.detach()
+			this.onDetach && this.onDetach()
+		}
 	}
 }
 

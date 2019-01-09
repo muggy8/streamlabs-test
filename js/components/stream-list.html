@@ -1,9 +1,10 @@
 <stream-list class="flex-mid wrap grow {: !+this.app.streams.list.length && 'hidden-state' :}|{streams.list}|">
 	<!-- foreach: key("streamIndex").in(this.app.streams.list) -->
-		<stream-card class="col-12-12-smol col-4-12-mid col-3-12-big">
+		<stream-card class="link col-12-12-smol col-4-12-mid col-3-12-big" onclick="this.app.viewStream(this.app.streams.list[this.streamIndex])">
 			<div class="img-aspect-16-9">
 				<img src="{:this.app.streams.list[this.streamIndex].snippet.thumbnails.medium.url:}" />
 			</div>
+			<strong>{:this.app.streams.list[this.streamIndex].snippet.title:}</strong>
 		</stream-card>
 	<!-- foreach: key.end() -->
 </stream-list>
