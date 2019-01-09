@@ -9,7 +9,7 @@ gapi.load('client:auth2', async function(){
 	})
 	app.controllers.banner.attach()
 
-	function signInSateChange(signInState){
+	let signInSateChange = app.signInSateChange = function(signInState){
 		app.authState = signInState
 		console.log(signInState)
 

@@ -9,9 +9,12 @@ app.controllers.banner.ajax = fetch("js/components/banner.html")
 
 		controller.view = proxymity(template, app.controllers.banner)
 
-		controller.logoutClick = function(){
+		controller.logoutClick = async function(){
 			console.log("logout clicked")
-			gapi.auth2.getAuthInstance().signOut()
+			let authInstance = gapi.auth2.getAuthInstance()
+			await authInstance.signOut()
+			await authInstance.disconnect()
+			document.location.reload()
 		}
 
 	})
