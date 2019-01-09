@@ -24,6 +24,17 @@ app.controllers = {}
 
 app.body = document.querySelector("app-main")
 
+app.controllers.base = {
+	attach: async function(){
+		if (this.ajax){
+			await this.ajax
+		}
+		if (this.view){
+			this.view.appendTo(app.body)
+		}
+	}
+}
+
 app.catchPromiseError = function(uwu){
 	console.log(uwu)
 	alert("An unexpected error has occurred. Check the console for more information")

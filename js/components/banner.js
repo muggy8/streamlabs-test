@@ -1,13 +1,11 @@
-fetch("js/components/banner.html")
+app.controllers.banner = Object.create(app.controllers.base)
+
+app.controllers.banner.ajax = fetch("js/components/banner.html")
 	.then(owo=>owo.text())
 	.then(template=>{
 		app.customElement("app-banner")
 
-		let view = proxymity(
-			template,
-			app.controllers.banner = app.controllers.banner || {}
-		)
+		app.controllers.banner.view = proxymity(template, app.controllers.banner)
 
-		view.appendTo(app.body)
 	})
 	.catch(app.catchPromiseError)
