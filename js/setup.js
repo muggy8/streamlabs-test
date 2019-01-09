@@ -32,6 +32,9 @@ app.controllers.base = {
 		if (this.view){
 			this.view.appendTo(app.body)
 		}
+	},
+	detach: function(){
+		this.view.detach()
 	}
 }
 
