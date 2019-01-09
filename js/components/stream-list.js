@@ -4,31 +4,32 @@ app.controllers.streamList.ajax = fetch("js/components/stream-list.html")
 	.then(owo=>owo.text())
 	.then(template=>{
 		app.customElement("stream-list")
-		app.customElement("error-list")
+		app.customElement("stream-card")
 
 		let controller = app.controllers.streamList
 
 		controller.streams = {
-			errors: []
+			list: [],
 		}
 
 		controller.onAttach = async function(){
+			// let subs = await app.recursiveFetcher( gapi.client.youtube.subscriptions.list, {
+			// 	part: "snippet,contentDetails",
+			// 	mine: true,
+			// })
+			//
+			// console.log(subs)
 
-			// controller.streams = {
-			// 	errors: []
-			// }
+			let live = await gapi.client.youtube.search.list({
+				part: "snippet",
+				type: "video",
+				eventType: 'live',
+				maxResults: 50,
+				order: "viewCount",
+				relevanceLanguage: navigator.language
+			})
 
-			try{
-				controller.streams.list = await gapi.client.youtube.liveBroadcasts.list({
-					part: "snippet",
-					broadcastStatus: "active",
-					broadcastType: "all"
-				})
-			}
-			catch(uwu){
-				console.warn(uwu)
-				uwu.result.error.errors.forEach(err=>controller.streams.errors.push(err))
-			}
+			live.result.items.forEach(item=>controller.streams.list.push(item))
 		}
 
 		controller.view = proxymity(template, app.controllers.streamList)

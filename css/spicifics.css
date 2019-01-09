@@ -2,11 +2,36 @@ app-banner {
 	padding: var(--base-padding);
 	color: var(--color-white);
 	background-color: var(--color-primary);
+	min-height: 3em;
 }
 
 stream-list {
-	padding: var(--base-padding);
+	padding: calc(var(--base-padding) / 2);
 	overflow: auto;
 	overflow-x: none;
 	overflow-y: auto;
+}
+
+stream-card {
+	padding: calc(var(--base-padding) / 2);
+	border: solid calc(var(--base-padding) / 2) var(--color-background);
+	background-color: var(--color-secondary);
+}
+
+.img-aspect-16-9 {
+	position: relative;
+	width: 100%;
+}
+.img-aspect-16-9::before {
+	display: block;
+	content: " ";
+	padding-bottom: 56.25%;
+}
+.img-aspect-16-9 > * {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
 }

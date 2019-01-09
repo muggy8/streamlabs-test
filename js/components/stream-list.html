@@ -1,17 +1,9 @@
-<stream-list class="grow {: !+this.app.streams.list.length && 'hidden-state' :}|{streams.list}|">
-
-</stream-list>
-<error-list class="grow flex vhcenter {: !+this.app.streams.errors.length && 'hidden-state' :}|{streams.errors}|">
-	<!-- foreach: {
-		key("errorIndex").in(this.app.streams.errors)
-	} -->
-		<div>
-			<div>
-				Error: {:this.app.streams.errors[this.errorIndex].message:}
+<stream-list class="flex-mid wrap grow {: !+this.app.streams.list.length && 'hidden-state' :}|{streams.list}|">
+	<!-- foreach: key("streamIndex").in(this.app.streams.list) -->
+		<stream-card class="col-12-12-smol col-4-12-mid col-3-12-big">
+			<div class="img-aspect-16-9">
+				<img src="{:this.app.streams.list[this.streamIndex].snippet.thumbnails.medium.url:}" />
 			</div>
-			<div>
-				Please Visit: <a href="{:this.app.streams.errors[this.errorIndex].extendedHelp:}" target="_blank">{:this.app.streams.errors[this.errorIndex].extendedHelp:}</a>
-			</div>
-		</div>
+		</stream-card>
 	<!-- foreach: key.end() -->
-</error-list>
+</stream-list>

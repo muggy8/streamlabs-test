@@ -17,6 +17,24 @@ const app = proxymity.convert({})
 	}
 }
 
+{
+	let recursiveFetcher = app.recursiveFetcher = async function(endpoint, config, totalResults = [], nextPageToken){
+		if (nextPageToken){
+			config.pageToken = nextPageToken
+		}
+		config.maxResults = config.maxResults || 50
+
+		let requestResults = await endpoint(config)
+		requestResults.result.items.forEach(item=>totalResults.push(item))
+
+		if (requestResults.result.nextPageToken){
+			return recursiveFetcher(endpoint, config, totalResults, requestResults.result.nextPageToken)
+		}
+
+		return totalResults
+	}
+}
+
 
 app.customElement("app-main")
 
