@@ -9,6 +9,7 @@ app.controllers.login.ajax = fetch("js/components/login-frame.html")
 
 		controller.loginClick = function(){
 			console.log("login clicked")
+			gapi.auth2.getAuthInstance().signIn();
 		}
 
 	})
