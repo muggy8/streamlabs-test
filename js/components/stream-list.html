@@ -1,3 +1,17 @@
-<stream-list class="grow">
+<stream-list class="grow {: !+this.app.streams.list.length && 'hidden-state' :}|{streams.list}|">
 
 </stream-list>
+<error-list class="grow flex vhcenter {: !+this.app.streams.errors.length && 'hidden-state' :}|{streams.errors}|">
+	<!-- foreach: {
+		key("errorIndex").in(this.app.streams.errors)
+	} -->
+		<div>
+			<div>
+				Error: {:this.app.streams.errors[this.errorIndex].message:}
+			</div>
+			<div>
+				Please Visit: <a href="{:this.app.streams.errors[this.errorIndex].extendedHelp:}" target="_blank">{:this.app.streams.errors[this.errorIndex].extendedHelp:}</a>
+			</div>
+		</div>
+	<!-- foreach: key.end() -->
+</error-list>
