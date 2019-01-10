@@ -1,3 +1,19 @@
-<div class="img-aspect-16-9">
-	<iframe src="https://www.youtube.com/embed/{:this.app.videoId:}|{videoId}|?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="grow relative flex-mid">
+	<iframe
+		class="animate col-12-12-smol {: +this.app.chat.open ? 'col-8-12-mid' : 'col-12-12-mid' :}|{chat.open}|"
+		src="https://www.youtube.com/embed/{:this.app.videoId:}|{videoId}|?autoplay=1"
+		frameborder="0"
+		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen
+	></iframe>
+	<div class="animate relative col-12-12-smol {: +this.app.chat.open ? 'col-4-12-mid' : 'col-0-12-mid' :}|{chat.open}|">
+		<div class="side-drawer-handle text-center" onclick="this.app.chat.open = !+this.app.chat.open">
+			<div class="icon">
+				<div class="chat">
+
+				</div>
+			</div>
+			<span>Chats</span>
+		</div>
+	</div>
 </div>

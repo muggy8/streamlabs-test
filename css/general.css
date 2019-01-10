@@ -1,6 +1,9 @@
 img {
 	max-width: 100%;
 }
+.animate {
+	transition: all 0.5s;
+}
 
 .flex,
 .flex-smol {
