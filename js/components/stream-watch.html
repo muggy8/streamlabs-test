@@ -49,7 +49,7 @@
 				var(--base-padding) * 2 + {: (this.firstElementChild.firstElementChild.scrollHeight || 16) + 1:}|{chat.input}|px
 			)">
 				<div class="grow chat-input-wrap">
-					<textarea name="chat.input" rows="1" style="min-height: {:this.app.chat.input ? this.scrollHeight + 1 : 1:}|{chat.input}|px" onkeyup="event.keyCode === 13 && this.app.sendMessage()"></textarea>
+					<textarea name="chat.input" rows="1" style="min-height: {:this.app.chat.input ? this.scrollHeight + 1 : 1:}|{chat.input}|px" onkeyup="!event.shiftKey && event.keyCode === 13 && ((this.value = ''), event.preventDefault(), this.app.sendMessage())"></textarea>
 				</div>
 				<div class="icon" style="margin: var(--base-padding);" onclick="this.app.sendMessage()">
 					<div class="send-message"></div>

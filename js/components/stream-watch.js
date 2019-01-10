@@ -23,13 +23,34 @@ app.controllers.streamWatch.ajax = fetch("js/components/stream-watch.html")
 			messages: []
 		}
 
+		controller.sendMessage = async function(){
+			if (!controller.chat.input || !controller.streamDeets.activeLiveChatId){
+				return
+			}
+
+			controller.chat.input = ""
+
+			await gapi.client.youtube.liveChatMessages.insert({
+				part: "snippet",
+				resource: {
+					snippet: {
+						liveChatId: controller.streamDeets.activeLiveChatId,
+						type: "textMessageEvent",
+						textMessageDetails: {
+							messageText: controller.chat.input
+						}
+					}
+				}
+			})
+		}
+
 		function wait(ms){
 			return new Promise(function(accept){
 				setTimeout(accept, ms)
 			})
 		}
 
-		async function fetchChatRecursive(){
+		async function fetchChatRecursive(doAgain = true){
 			// this is a recursive fetch function and this is the stop condition aka when the video that the user is watching has been switch away
 			if (!controller.streamDeets.activeLiveChatId){
 				return
@@ -50,8 +71,10 @@ app.controllers.streamWatch.ajax = fetch("js/components/stream-watch.html")
 			controller.scrollingChat.scrollTop = controller.scrollingChat.scrollHeight
 
 			// wait for as long as google tells us to wait and then re fetch
-			await wait(currentChat.result.pollingIntervalMillis)
-			fetchChatRecursive()
+			if (doAgain){
+				await wait(currentChat.result.pollingIntervalMillis)
+				fetchChatRecursive()
+			}
 		}
 
 		controller.watch("chat.open", fetchChatRecursive)
