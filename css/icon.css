@@ -1,8 +1,6 @@
 .icon {
 	width: 1em;
 	height: 1em;
-	margin-left: auto;
-	margin-right: auto;
 	display: inline-block;
 	position: relative;
 }
@@ -31,4 +29,13 @@
 	border-right: solid 0.05em var(--color-text);
 	background-color: var(--color-background);
 	transform: skew(25deg, 25deg);
+}
+
+.icon .chevron-right {
+	width: 0.7em;
+	height: 0.7em;
+	margin: 0.15em 0.3em 0.15em 0;
+	border-bottom: solid 0.05em var(--color-text);
+	border-right: solid 0.05em var(--color-text);
+	transform: rotate(-45deg);
 }

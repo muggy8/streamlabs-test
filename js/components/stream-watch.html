@@ -7,13 +7,29 @@
 		allowfullscreen
 	></iframe>
 	<div class="animate relative col-12-12-smol {: +this.app.chat.open ? 'col-4-12-mid' : 'col-0-12-mid' :}|{chat.open}|">
-		<div class="side-drawer-handle text-center" onclick="this.app.chat.open = !+this.app.chat.open">
+
+		<!-- The handle that opens the chat drawer -->
+		<div class="side-drawer-handle text-center {: +this.app.chat.open && 'hidden-state' :}|{chat.open}|" onclick="this.app.chat.open = !+this.app.chat.open">
 			<div class="icon">
 				<div class="chat">
 
 				</div>
 			</div>
 			<span>Chats</span>
+		</div>
+
+		<!-- The actual chat UI -->
+		<!-- Chat top menu UI stuff -->
+		<div style="padding: var(--base-padding)" class="flex vcenter" onclick="this.app.chat.open = !+this.app.chat.open">
+			<span>Close Chat</span>
+			<div class="icon">
+				<div class="chevron-right"></div>
+			</div>
+		</div>
+
+		<!-- The actual chat messages and stuff -->
+		<div class="flex column-reverse">
+
 		</div>
 	</div>
 </div>
