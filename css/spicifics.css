@@ -73,3 +73,26 @@ stream-card {
 .side-drawer-handle:hover {
 	opacity: 1;
 }
+
+
+rolling-chat {
+	overflow: auto;
+	overflow-x: none;
+	overflow-y: auto;
+}
+
+.chat-profile-image {
+	width: 1em;
+	height: 1em;
+	margin-right: var(--base-padding);
+}
+
+chat-message {
+	margin: var(--base-padding);
+	border-top: solid 1px var(--color-secondary);
+	padding-top: var(--base-padding);
+}
+
+chat-display-text {
+	margin-left: calc(1em + var(--base-padding));
+}

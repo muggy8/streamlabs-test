@@ -4,6 +4,10 @@ app.controllers.streamWatch.ajax = fetch("js/components/stream-watch.html")
 	.then(owo=>owo.text())
 	.then(template=>{
 
+		app.customElement("chat-message")
+		app.customElement("chat-display-text")
+		app.customElement("rolling-chat")
+
 		let controller = app.controllers.streamWatch
 
 		controller.routRegex = /^\/stream\/([^\/]+)/
@@ -26,23 +30,26 @@ app.controllers.streamWatch.ajax = fetch("js/components/stream-watch.html")
 		}
 
 		async function fetchChatRecursive(){
-			console.log("chat open toggled")
+			// this is a recursive fetch function and this is the stop condition aka when the video that the user is watching has been switch away
 			if (!controller.streamDeets.activeLiveChatId){
 				return
 			}
 
 			let currentChat = await gapi.client.youtube.liveChatMessages.list({
-				part: "snippet",
+				part: "snippet,authorDetails",
 				liveChatId: controller.streamDeets.activeLiveChatId,
 				pageToken: controller.chat.nextPageToken || undefined
 			})
-
-			console.log(currentChat)
 
 			currentChat.result.items.forEach(message=>controller.chat.messages.push(message))
 
 			controller.chat.nextPageToken = currentChat.result.nextPageToken
 
+			// scroll the chat to the bottom after proxymity is done re-rendering the view automagically
+			await proxymity.on.renderend
+			controller.scrollingChat.scrollTop = controller.scrollingChat.scrollHeight
+
+			// wait for as long as google tells us to wait and then re fetch
 			await wait(currentChat.result.pollingIntervalMillis)
 			fetchChatRecursive()
 		}
