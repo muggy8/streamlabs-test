@@ -45,10 +45,15 @@
 				<!-- foreach: key.end() -->
 			</rolling-chat>
 
-			<div class="chat-input-wrap" style="min-height: calc(
-				var(--base-padding) + {: (this.firstElementChild.scrollHeight || 16) + 1:}|{chat.input}|px
+			<div class="flex vcenter" style="min-height: calc(
+				var(--base-padding) * 2 + {: (this.firstElementChild.firstElementChild.scrollHeight || 16) + 1:}|{chat.input}|px
 			)">
-				<textarea name="chat.input" rows="1" style="min-height: {:this.app.chat.input ? this.scrollHeight + 1 : 1:}|{chat.input}|px"></textarea>
+				<div class="grow chat-input-wrap">
+					<textarea name="chat.input" rows="1" style="min-height: {:this.app.chat.input ? this.scrollHeight + 1 : 1:}|{chat.input}|px" onkeyup="event.keyCode === 13 && this.app.sendMessage()"></textarea>
+				</div>
+				<div class="icon" style="margin: var(--base-padding);" onclick="this.app.sendMessage()">
+					<div class="send-message"></div>
+				</div>
 			</div>
 		</div>
 	</div>
