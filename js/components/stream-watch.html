@@ -1,11 +1,13 @@
 <div class="grow relative flex-mid">
-	<iframe
-		class="animate col-12-12-smol {: +this.app.chat.open ? 'col-8-12-mid' : 'col-12-12-mid' :}|{chat.open}|"
-		src="https://www.youtube.com/embed/{:this.app.videoId:}|{videoId}|?autoplay=1"
-		frameborder="0"
-		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-		allowfullscreen
-	></iframe>
+	<div class="flex img-aspect-16-9-smol-only animate col-12-12-smol {: +this.app.chat.open ? 'col-8-12-mid' : 'col-12-12-mid' :}|{chat.open}|">
+		<iframe
+			class="grow animate col-12-12-smol {: +this.app.chat.open ? 'col-8-12-mid' : 'col-12-12-mid' :}|{chat.open}|"
+			src="https://www.youtube.com/embed/{:this.app.videoId:}|{videoId}|?autoplay=1"
+			frameborder="0"
+			allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+			allowfullscreen
+		></iframe>
+	</div>
 	<div class="animate relative col-12-12-smol {: +this.app.chat.open ? 'col-4-12-mid' : 'col-0-12-mid' :}|{chat.open}|">
 
 		<!-- The handle that opens the chat drawer -->
@@ -19,17 +21,19 @@
 		</div>
 
 		<!-- The actual chat UI -->
-		<!-- Chat top menu UI stuff -->
-		<div style="padding: var(--base-padding)" class="flex vcenter" onclick="this.app.chat.open = !+this.app.chat.open">
-			<span>Close Chat</span>
-			<div class="icon">
-				<div class="chevron-right"></div>
+		<div class="{: !+this.app.chat.open && 'hidden-state' :}|{chat.open}|">
+			<!-- Chat top menu UI stuff -->
+			<div style="padding: var(--base-padding)" class="hide flex-mid vcenter" onclick="this.app.chat.open = !+this.app.chat.open">
+				<span>Close Chat</span>
+				<div class="icon">
+					<div class="chevron-right"></div>
+				</div>
 			</div>
-		</div>
 
-		<!-- The actual chat messages and stuff -->
-		<div class="flex column-reverse">
+			<!-- The actual chat messages and stuff -->
+			<div class="flex column-reverse">
 
+			</div>
 		</div>
 	</div>
 </div>
